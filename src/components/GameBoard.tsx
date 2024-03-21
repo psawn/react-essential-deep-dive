@@ -1,23 +1,5 @@
 import { GameBoardType } from "../App";
 
-// type GameBoard = (null | string)[][];
-
-// const initialGameBoard: GameBoard = [
-//   [null, null, null],
-//   [null, null, null],
-//   [null, null, null],
-// ];
-
-// function copyGameBoard(gameBoard: GameBoard) {
-//   return gameBoard.map((innerArray) => {
-//     if (Array.isArray(innerArray)) {
-//       return [...innerArray]; // Create a copy of the nested array
-//     } else {
-//       return innerArray; // Copy individual values
-//     }
-//   });
-// }
-
 export function GameBoard({
   onSelectSquare,
   board,

@@ -4,10 +4,14 @@ export function Player({
   initialName,
   symbol,
   isActive,
+  onChangeName,
+  isEnableEditName,
 }: {
   initialName: string;
   symbol: string;
   isActive: boolean;
+  onChangeName: (symbol: string, newName: string) => void;
+  isEnableEditName: boolean;
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(initialName);
@@ -16,6 +20,10 @@ export function Player({
     // setIsEditting(isEditting ? false : true); // not use this
     // setIsEditting(!isEditting); // not use this
     setIsEditing((editing) => !editing);
+
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -41,7 +49,9 @@ export function Player({
         {editablePlayerName}
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handleEditClick}>{isEditing ? "Save" : "Edit"}</button>
+      {isEnableEditName ? (
+        <button onClick={handleEditClick}>{isEditing ? "Save" : "Edit"}</button>
+      ) : null}
     </li>
   );
 }
